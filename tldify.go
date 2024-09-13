@@ -28,6 +28,11 @@ type URL struct {
 // It parses the given URL string and returns a tldify.URL containing the standard URL fields
 // along with additional details like Subdomain, Domain, TLD, Port, and ICANN status.
 func Parse(s string) (*URL, error) {
+
+	if !strings.HasPrefix(s, "http://") || !strings.HasPrefix(s, "https://"){
+		s = fmt.Sprintf("http://%s", s)
+	}
+
 	parsedURL, err := url.Parse(s)
 	if err != nil {
 		return nil, err
