@@ -29,7 +29,7 @@ type URL struct {
 // along with additional details like Subdomain, Domain, TLD, Port, and ICANN status.
 func Parse(s string) (*URL, error) {
 
-	if !strings.HasPrefix(s, "http://") || !strings.HasPrefix(s, "https://"){
+	if !strings.HasPrefix(s, "http://") && !strings.HasPrefix(s, "https://"){
 		s = fmt.Sprintf("http://%s", s)
 	}
 
